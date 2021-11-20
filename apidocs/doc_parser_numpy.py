@@ -102,17 +102,17 @@ def make_doc(args, ks, sents):
     return " ".join(ret_sents)
 
 if __name__ == '__main__':
-    fd = open('python-docs1.jsonl', 'w', encoding='utf-8')
+    fd = open('numpy-docs.jsonl', 'w', encoding='utf-8')
     counter = 0
     module_counter = {}
-    for root, dirs, files in os.walk("Python-3.10.0/Doc/build/html/library"):
+    for root, dirs, files in os.walk("numpy_generated"):
         for file in files:
             if file.endswith('.html'):
                 input_filename = os.path.join(root, file)
                 module_count = 0
                 with open(input_filename, encoding='utf-8') as html_file:
                     soup = BeautifulSoup(html_file.read(), 'html.parser')
-                    all_sections = soup.find('div', 'body').find_all('dl')
+                    all_sections = soup.find('div', class_='section').find_all('dl')
                     current_class_name = None
                     for section in all_sections:
                         section_class_attrs = section.get('class')
