@@ -37,12 +37,13 @@ class ESSearcher():
             print(new_query_str)
             input()
         '''
-        return '{}:({})'.format(field, new_query_str)
+        return '{}:{}'.format(field, new_query_str)
 
     def get_topk(self, query_str: str, field: str, topk: int=5):
+        q_fmt = self.query_format(query_str, field)
         results = self.es.search(
             index=self.index_name, 
-            q=self.query_format(query_str, field))['hits']['hits'][:topk]
+            q=q_fmt)['hits']['hits'][:topk]
         return [(doc['_source'], doc['_score']) for doc in results]
 
 def load_multi_files(files: List[str], max_counts: List[int]=None):
@@ -80,7 +81,7 @@ def aug_iter(ess, dataset, field, topk):
 
 def topk_aug(args):
     dataset = load_multi_files(args.inp.split(':'))
-    ess = ESSearcher(index_name='python-docs')
+    ess = ESSearcher(index_name='python-code')
 
     aug_dataset = []
     id2count = defaultdict(lambda: 0)
@@ -111,7 +112,7 @@ def anneal(probs: np.ndarray, temperature=1):
 def get_distribution(args):
     files = args.inp.split(':')
     dataset = load_multi_files(files, max_counts=[args.max_count] * len(files))
-    ess = ESSearcher(index_name='python-docs')
+    ess = ESSearcher(index_name='python-code')
 
     aug_dataset = []
     id2count = defaultdict(lambda: 0)
