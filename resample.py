@@ -30,5 +30,3 @@ with open(sys.argv[2], 'w') as wf:
     for sq in sampled_qids:
         si = es.search(index="python-code", q="question_id:{}".format(sq))['hits']['hits'][0]['_source']
         wf.write(json.dumps(si) + ",\n")
-
-
