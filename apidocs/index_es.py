@@ -10,7 +10,7 @@ es.indices.delete(index='python-code', ignore=[400, 404])
 
 print(es.indices.create(index='python-code', ignore=400))
 
-jsonl_file = "python_docs.jsonl"
+jsonl_file = sys.argv[1]
 
 def gendata(filename):
     with open(filename, encoding='utf-8') as jsonl:
