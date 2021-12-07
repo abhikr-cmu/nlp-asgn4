@@ -2,7 +2,7 @@
 
 #### Team Members : Abhishek Kumar, Deep Karkhanis, Nilay Pande
 
-We have worked on Automatic Code Generation for Python Language. We picked the SOTA **Code generation from natural language with less prior and more monolingual data (TAE)** as the base model and were able to improve its BLEU score by 0.9
+We have worked on Automatic Code Generation for Python Language. We picked the SOTA **Code generation from natural language with less prior and more monolingual data (TAE)** as the base model and were able to improve its BLEU score by **0.9**
 
 Following are important folders in the repo :
 * `screenshots/` folder contain the screenshot of test accuracy we obtained on the CoNaLa dataset for various methods
