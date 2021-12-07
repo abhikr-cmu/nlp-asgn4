@@ -2,15 +2,26 @@
 
 #### Team Members : Abhishek Kumar, Deep Karkhanis, Nilay Pande
 
+We have worked on Automatic Code Generation for Python Language. We picked the SOTA **Code generation from natural language with less prior and more monolingual data (TAE)** as the base model and were able to improve its BLEU score by 0.9
 
-### We have reproduced results mentioned in the paper
-Here are the evaluation numbers for the provided checkpoints:
+Following are important folders in the repo :
+* `screenshots/` folder contain the screenshot of test accuracy we obtained on the CoNaLa dataset for various methods
+* `generated_test_outputs/` contain the output of the models on the CoNaLa test
+* `our_models/` folder contain our models
 
-| Dataset | Results      | Metric             |
-| ------- | ------------ | ------------------ |
-| Django  | 81.1         | Exact Match Acc.   |
-| CoNaLa  | 33.19        | Corpus BLEU        |
 
+Following are our results on CoNaLa dataset and Corpus BLEU
+
+| Method  | Results      | 
+| ------- | ------------ |
+| Baseline SOTA | 33.41         |
+| SOTA + Python Standard Lib | 32.09        | 
+| SOTA + Python Standard Lib + Numpy + Pandas + Torch  | 33.3        | 
+| **SOTA + Python Standard Lib + Numpy + Pandas + Torch + Prob Prune + Len Constrain**  | **34.31**        | 
+| SOTA + Python Standard Lib + Numpy + Pandas + Torch + Prob Prune + Len Constrain + Libname  | 32.76        | 
+
+
+Our best results are with SOTA model bootstrapped with Python standard library, Numpy, Pandas, and PyTorch library. During Sampling we do a probability pruning to stop some examples from getting unfair advantage over others. Moreover, we place a contraint of number of characters (120) in the intent.
 
 
 
