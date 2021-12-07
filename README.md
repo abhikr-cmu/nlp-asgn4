@@ -14,11 +14,11 @@ Following are our results on CoNaLa dataset and Corpus BLEU
 
 | Method  | Results      | 
 | ------- | ------------ |
-| Baseline SOTA | 33.41         |
-| SOTA + Python Standard Lib | 32.09        | 
-| SOTA + Python Standard Lib + Numpy + Pandas + Torch  | 33.3        | 
-| **SOTA + Python Standard Lib + Numpy + Pandas + Torch + Prob Prune + Len Constrain**  | **34.31**        | 
-| SOTA + Python Standard Lib + Numpy + Pandas + Torch + Prob Prune + Len Constrain + Libname  | 32.76        | 
+| Baseline SOTA | 33.41  |
+| SOTA + Python Standard Lib + Numpy + Pandas + Torch| 32.09        | 
+| SOTA + Python Standard Lib + Numpy + Pandas + Torch + Resample  | 33.3        | 
+| **SOTA + Python Standard Lib + Numpy + Pandas + Torch + Resample + Prob Prune + Len Constrain**  | **34.31**        | 
+| SOTA + Python Standard Lib + Numpy + Pandas + Torch + Resample + Prob Prune + Len Constrain + Libname  | 32.76        | 
 
 
 Our best results are with SOTA model bootstrapped with Python standard library, Numpy, Pandas, and PyTorch library. During Sampling we do a probability pruning to stop some examples from getting unfair advantage over others. Moreover, we place a contraint of number of characters (120) in the intent.
